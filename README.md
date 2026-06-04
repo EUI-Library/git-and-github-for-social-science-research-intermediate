@@ -1,11 +1,11 @@
-# Slide deck template for the EUI Library training sessions
+# Slide deck the EUI Library training sessions "Git and GitHub for Social Science Research: Intermediate level" (first given in June 2026)
 
 These slides are prepared in the context of the EUI Library #researchskils training programme.
 
 * Web version: TBD
 * GitHub repo (this repository): 
 
-Instructors: Simone Sacchi
+Instructors: Mathieu Dubied and Simone Sacchi
  
 Slides have been prepared adapting the demo slides for working with [Revealjs](https://revealjs.com/) in [Quarto](https://quarto.org/).
 
