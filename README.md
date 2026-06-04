@@ -2,8 +2,8 @@
 
 These slides are prepared in the context of the EUI Library #researchskils training programme.
 
-* Web version: TBD
-* GitHub repo (this repository): 
+* Web version: [https://eui-library.github.io/git-and-github-for-social-science-research-intermediate/](https://eui-library.github.io/git-and-github-for-social-science-research-intermediate/)
+* GitHub repo (this repository)
 
 Instructors: Mathieu Dubied and Simone Sacchi
  
