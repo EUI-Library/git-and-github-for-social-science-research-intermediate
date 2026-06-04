@@ -1,7 +1,7 @@
 ---
-title: '<br/>Title of the slides'
-subtitle: 'Subtitle'
-author: <strong>Simone Sacchi</strong><br /><a href="mailto:simone.sacchi@eui.eu">simone.sacchi@eui.eu</a>
+title: '<br/>Git and GitHub for Social Science Research'
+subtitle: 'Intermediate level: collaboration'
+author: <strong>Mathieu Dubied</strong> | <strong>Simone Sacchi</strong><br /><a href="mailto:mathieu.dubied@eui.eu">mathieu.dubied@eui.eu</a> | <a href="mailto:simone.sacchi@eui.eu">simone.sacchi@eui.eu</a>
 title-slide-attributes:
   data-background-image: 'images/EUI-logo-acronym.svg'
   data-background-size: '20%'
@@ -18,7 +18,7 @@ format:
     preview-links: auto
     logo: images/EUI_logo.png
     css: styles.css
-    footer: 'Add title for the footer here'
+    footer: 'Git and GitHub for Social Science Research: Intermediate level'
 
 ---
 
@@ -28,111 +28,155 @@ format:
 
 ## Initial questions
 
-* Question 1
-* Question 2
+* Are you familiar with the basics of working with `Git` and `GitHub` (create a repository, committing changes, etc.)? (see [https://eui-library.github.io/git-and-github-for-social-science-research-basic/](https://eui-library.github.io/git-and-github-for-social-science-research-basic/){target="_blank"})
+* Have you ever collaborated with your colleagues using `Git` and `GitHub`?
 
 ## Agenda for today
 
 * Introduction
-* etc.
-
-# Introduction {style="text-align: center;" .center}
+* Core concepts and tools (branch, pull request, merge)
+* Hand-on work in pairs
 
 ## Learning objetives
 
-* Learning objective 1
-* Learning Objective 2
+* Adding collaborators to your repository
+* Work safely together and in parallel
 
-## Column example
+If we have time:
+
+* Manage conflicts (what if you and your collaborators rewrite the same paragraph or piece of code?)
+* Safeguard the "main" line of work by reviewing other's contributions
+
+# Introduction {style="text-align: center;" .center}
+
+## How we usually collaborate (on files)
+
+Most researchers rely on one of two approaches — both of which can create invisible problems.
 
 :::: {.columns}
 ::: {.column width="50%"}
+**Email attachments**
 
-[![](images/phd101212s_small.gif)](https://phdcomics.com/comics/archive.php?comicid=1531){data-preview-link="true"}
-
-PhD Comics "[FINAL.doc](https://phdcomics.com/comics/archive.php?comicid=1531){data-preview-link="true"}"
-
+```
+analysis_simo.R
+analysis_simo_v2.R
+analysis_anna_edits.R
+analysis_FINAL_merged.R
+analysis_FINAL_merged2.R
+```
 :::
 ::: {.column width="50%"}
-
-#### Or from a code perspective...
+**Shared drives**
 
 ```
-my_analysis.R
-my_analysis_FINAL.R
-my_analysis_FINAL_v2.R
-my_analysis_FINAL_v2_REVIEWED.R
-my_analysis_FINAL_v2_REVIEWED_Jan.R
-my_analysis_THIS_ONE.R
+/OneDrive/project/
+  data_CLEAN.xlsx
+  data_CLEAN_new.xlsx
+  data_USE_THIS.xlsx
+  data_DO_NOT_USE.xlsx
 ```
-
 :::
-:::
+::::
 
-## Bullet points
 
-* bullet 1
-* bullet 2
-
-**Version control is like an unlimited ‘undo/redo’.**
-
-## Image example {.smaller}
-
-Version control is like a 'recording' of history
-
-![Three documents. The first has two paragraphs. The second has a modified paragraph. The third has an additional paragraph](images/play-changes.png)
-
-...Rewind and play changes back again!
-
-## Callout example? {.smaller}
-
-some text here
-
-::: {.callout-tip}
-Callout wirh data-preview link [**reproducible research**](https://book.the-turing-way.org/){data-preview-link="true"}
+::: {.callout-note appearance="simple"}
+**What can go wrong?** There is no explicit record of *who* changed *what*, *when*, or *why*. Merging changes manually is error-prone and time-consuming.
 :::
 
+## Structured collaboration properties {.smaller}
 
+Good collaborative workflows share three properties (Blischak et al., 2016):
 
-## Example with r-fit-text {.smaller}
+1. **Traceability** — every change is recorded with authorship and context
+2. **Reversibility** — any mistake can be undone without data loss
+3. **Parallelism** — multiple contributors work simultaneously without blocking each other
 
-<br />
+::: {.callout-note appearance="simple"}
+These properties are built into Git (and GitHub) by design.
+:::
+
+## Real-world research collaboration on GitHub {.smaller}
+
+GitHub is where much contemporary collaborative research actually happens:
+
+- **The Turing Way** — an open, community-driven handbook on reproducible research with 300+ contributors.  
+  → [github.com/the-turing-way/the-turing-way](https://github.com/the-turing-way/the-turing-way){target="_blank"}
+- **rOpenSci** — peer-reviewed R packages for open science, developed collaboratively on GitHub.  
+  → [github.com/ropensci](https://github.com/ropensci){target="_blank"}
+- And many others, not necessarily "public"
+
+::: {.callout-tip appearance="simple"}
+Journals increasingly require code and data to be shared via GitHub or similar platforms as a condition of publication.
+:::
+
+# Collaboration workflow {style="text-align: center;" .center}
+
+*Branch | Pull Request | Merge — using GitHub Desktop
+
+## A big idea: branches {.smaller}
+
+A **branch** is an independent copy of your project where you can work freely — without affecting the main version.
 
 ::: {.r-fit-text }
 
+
 ```
-Working Directory  →  Staging Area         →    Repository
-   (your files)       (selected changes)        (permanent snapshot)
+main ─────●─────────────────────────●──────▶
+           \                        /
+            ●───●───● feature-X ───●
 ```
 
 :::
 
-Think of it like writing a paper:
+- `main` shall stay always stable and working
+- Each collaborator works on **their own branch**
+- When work is ready, it is **merged** back into `main` (through a **pull request**)
 
-- **Working Directory** → your working draft
-- **Staging Area** → pages you've selected to submit
-- **Repository** → the final, submitted version (that you can still revise!)
+::: {.callout-tip appearance="simple"}
+Think of a branch as a **dedicated workspace** for one task or one person.
+:::
 
-## The commit: heart of Git {.smaller}
+## Why branch? A research example {.smaller}
 
-## Example with icons {.nostretch}
-What is likely to happen…
+Imagine two co-authors working on the same project at the same time:
 
-![Some suggestions:](images/git_commit.png){width="50%"}
+| Collaborator | Branch | Task |
+|---|---|---|
+| Simo | `main` | Stable, last shared version |
+| Simo | `chapter2-rewrite` | Revising the literature review |
+| Anna | `robustness-checks` | Adding Table A3 |
 
-```
-✅ "Recode income variable to quintiles for Table 3"
-❌ "fixed stuff"
-❌ "asdfgh"
-```
+When both are done, each branch is **merged** into `main` — independently reviewed and integrated.
+
+::: {.callout-tip}
+You can leverage branches even if you are working solo: experiment without "touching" what works!
+:::
+
+## Opening a Pull Request {.smaller}
+
+When your branch work is ready, you open a **Pull Request (PR)** — a formal proposal to merge your changes into `main`.
+
+A Pull Request:
+
+- Shows exactly **what changed** (a diff of every modified file)
+- Provides a space for **discussion and review** before merging
+- Creates a **permanent record** of why the change was made
+- Can be **approved or rejected** by collaborators
+
+::: {.callout-note appearance="simple"}
+A Pull Request is the peer review process *built into your workflow*.
+:::
 
 
+# Let's work together! {style="text-align: center;" .center}
+
+(demo first)
 
 ## Your feedback matters! 
 
-![](/images/QRCode%20for%20Git%20and%20GitHub%20for%20Social%20Science%20Research_%20basic%20level.png){fig-align="center"}
+![](/images/QRCode%20for%20Git%20and%20GitHub%20for%20Social%20Science%20Research_%20intermediate%20level%20-%20collaboration.png){fig-align="center"}
 
-Link: [https://forms.cloud.microsoft/e/dZwq7DAWPE](https://forms.cloud.microsoft/e/dZwq7DAWPE)
+Link: [https://forms.cloud.microsoft/e/gizkDkGkXU](https://forms.cloud.microsoft/e/gizkDkGkXU)
 
 
 ## Any question? {style="text-align: center;" .center background-image="/images/just_science_done_right.png" background-position="top right" background-repeat="no-repeat" background-size="15%" .smaller}
@@ -149,10 +193,141 @@ Research Data Librarian, EUI Library
 ![](/images/eui_view.png){fig-align="center" width="60%"}
 :::
 
-## Essential resources
-[*Happy Git and GitHub for the useR*](https://happygitwithr.com/) by Jenny Bryan — free online, written for researchers.
+## References
+
+- Bryan, J. (2024). *Happy Git and GitHub for the useR*. [happygitwithr.com](https://happygitwithr.com/)
+- Blischak, J. D., Davenport, E. R., & Wilson, G. (2016). A Quick Introduction to Version Control with Git and GitHub. *PLOS Computational Biology*, 12(1). [doi:10.1371/journal.pcbi.1004668](https://doi.org/10.1371/journal.pcbi.1004668)
+- GitHub Docs. (2024). *Managing branches in GitHub Desktop*. [docs.github.com/en/desktop](https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop)
+- GitHub Docs. (2024). *About pull requests*. [docs.github.com/en/pull-requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- GitHub Docs. (2024). *Merging a pull request*. [docs.github.com/en/pull-requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request)
+- Microsoft. (2024). *Using Git source control in VS Code*. [code.visualstudio.com/docs/sourcecontrol](https://code.visualstudio.com/docs/sourcecontrol/overview)
+- Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., & Teal, T. K. (2017). Good enough practices in scientific computing. *PLOS Computational Biology*, 13(6). [doi:10.1371/journal.pcbi.1005510](https://doi.org/10.1371/journal.pcbi.1005510)
 
 
 ## End of the presentation {style="text-align: center;" .center}
 
 ## BACKUP SLIDES {style="text-align: center;" .center}
+
+## Inviting a Collaborator to Your Repository
+
+For **private repositories**, collaborators must be explicitly invited. For **public repositories**, anyone can view and clone — but only invited collaborators can push.
+
+**Steps on GitHub.com:**
+
+1. Go to your repository → **Settings** tab
+2. Click **Collaborators** in the left sidebar (under *Access*)
+3. Click **Add people**
+4. Search by **GitHub username** or **email address**
+5. Select the appropriate **role** and send the invitation
+6. The collaborator receives an email and must **accept** before gaining access
+
+> Collaborators receive an email invitation link. It expires after **7 days** — you can resend it from the same settings page.
+
+---
+
+## Collaborator Roles and Permissions
+
+GitHub offers five permission levels. Choose the role that matches each person's responsibilities.
+
+| Role | Read | Clone | Push | Merge PRs | Manage settings |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Read** | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Triage** | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Write** | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Maintain** | ✅ | ✅ | ✅ | ✅ | partial |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+**Recommended for most research collaborations:**
+
+- Give **co-authors and research assistants** the **Write** role
+- Keep **Admin** for the PI or repository owner only
+- Use **Read** for external reviewers or replicators
+
+
+## Cloning the Repository: What Collaborators Do
+
+Once invited and accepted, a collaborator **clones** the repository to create a local copy.
+
+:::: {.columns}
+::: {.column width="50%"}
+**GitHub Desktop:**
+
+1. Open GitHub Desktop and sign in
+2. **File → Clone Repository**
+3. Select the **GitHub.com** tab — invited repos appear automatically
+4. Choose the repo and a local folder
+5. Click **Clone**
+:::
+::: {.column width="50%"}
+**VS Code:**
+
+1. Open the **Source Control** panel (`Ctrl+Shift+G`)
+2. Click **Clone Repository**
+3. Paste the repo URL from GitHub.com  
+   *(green **Code** button → HTTPS tab)*
+4. Choose a local folder and confirm
+:::
+::::
+
+> After cloning, collaborators create a **branch**, do their work, commit, push, and open a **Pull Request** — the workflow from Part II.
+
+---
+
+## The Full Collaboration Loop
+
+```
+                ┌─────────────────────┐
+                │   github.com/repo   │  ← shared, central
+                └────────┬────────────┘
+                         │
+        ┌────────────────┼────────────────┐
+        ↓                                 ↓
+ ┌─────────────┐                   ┌─────────────┐
+ │  Simo's     │                   │  Anna's     │
+ │  computer   │                   │  computer   │
+ │  branch:    │                   │  branch:    │
+ │  ch2-edit   │                   │  table-a3   │
+ └──────┬──────┘                   └──────┬──────┘
+        │  Push + Pull Request            │  Push + Pull Request
+        └──────────────┬──────────────────┘
+                       ↓
+             Review → Merge → main
+```
+
+> **Rule of thumb:** Always **pull `main` before starting a new branch** — this ensures you build on the latest merged work.
+
+## Reviewing and Merging a Pull Request {.smaller}
+
+Once the PR is open, collaborators can review it on GitHub.com:
+
+1. Click **Files changed** to see the diff line-by-line
+2. Leave **inline comments** on specific lines by hovering and clicking the `+` icon
+3. Click **Review changes** → choose **Approve** or **Request changes**
+4. When approved, click **Merge pull request**
+5. Delete the branch when prompted — safe to do so, full history is preserved
+
+
+
+::: {.callout-tip appearance="simple"}
+**In GitHub Desktop:** After merging on GitHub.com, switch back to `main` and click **Fetch origin** to download the merged result locally.
+:::
+
+## Key Takeaways
+
+:::: {.columns}
+::: {.column width="55%"}
+**Collaboration essentials:**
+
+1. 🌿 **Branch** — one branch per task or contributor; never work directly on `main`
+2. 💬 **Commit often** — small, frequent commits with meaningful messages
+3. 🔁 **Pull Request** — propose, review, discuss, and merge changes
+4. 👥 **Invite collaborators** via Settings → Collaborators on GitHub.com
+5. ⬇️ **Always pull `main` first** — before starting any new work
+:::
+::: {.column width="45%"}
+**Tools:**
+
+- **GitHub Desktop** → repo management, branching, PRs  
+  [docs.github.com/en/desktop](https://docs.github.com/en/desktop)
+- **VS Code** → edit and commit in one place  
+  [code.visualstudio.com/docs/sourcecontrol](https://code.visualstudio.com/docs/sourcecontrol/overview)

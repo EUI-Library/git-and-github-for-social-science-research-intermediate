@@ -2,3 +2,4 @@
 /index_files/
 index.html
 **/*.quarto_ipynb
+.DS_Store
