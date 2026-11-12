@@ -168,8 +168,8 @@
 <li>Hand-on work in pairs</li>
 </ul>
 </section>
-<section id="learning-objetives" class="slide level2">
-<h2>Learning objetives</h2>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning objectives</h2>
 <ul>
 <li>Adding collaborators to your repository</li>
 <li>Work safely together and in parallel</li>
@@ -256,9 +256,34 @@ analysis_FINAL_merged2.R</code></pre>
 </div>
 </section></section>
 <section>
-<section id="collaboration-workflow" class="title-slide slide level1 center" style="text-align: center;">
-<h1>Collaboration workflow</h1>
-<p>*Branch | Pull Request | Merge — using GitHub Desktop</p>
+<section id="tutorials" class="title-slide slide level1 center" style="text-align: center;">
+<h1>Tutorials</h1>
+
+</section>
+<section id="separate-blocks" class="slide level2">
+<h2>3 separate blocks</h2>
+<ul>
+<li>Block 1: set up a shared repository</li>
+<li>Block 2: branches and pull requests</li>
+<li>Block 3: resolve conflicts</li>
+</ul>
+</section></section>
+<section>
+<section id="tutorial-block-1-set-up-a-shared-repository" class="title-slide slide level1 center" style="text-align: center;">
+<h1>Tutorial Block 1: set up a shared repository</h1>
+
+</section>
+<section id="summary-block-1" class="slide level2">
+<h2>Summary Block 1</h2>
+<ul>
+<li>The repository lives in 3 different places: online (on GitHub web), on the owner’s computer, and on the collaborator’s computer</li>
+<li>Git/GitHub is the link between these 3 places. It allows each version to “talk to each others”</li>
+</ul>
+</section></section>
+<section>
+<section id="tutorial-block-2-branches-and-pull-requests" class="title-slide slide level1 center" style="text-align: center;">
+<h1>Tutorial Block 2: branches and pull requests</h1>
+
 </section>
 <section id="a-big-idea-branches" class="slide level2 smaller">
 <h2>A big idea: branches</h2>
@@ -288,6 +313,11 @@ analysis_FINAL_merged2.R</code></pre>
 <h2>Why branch? A research example</h2>
 <p>Imagine two co-authors working on the same project at the same time:</p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Collaborator</th>
@@ -297,19 +327,19 @@ analysis_FINAL_merged2.R</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Simo</td>
+<td>—</td>
 <td><code>main</code></td>
-<td>Stable, last shared version</td>
+<td>Stable code that reproduces all results</td>
 </tr>
 <tr class="even">
 <td>Simo</td>
-<td><code>chapter2-rewrite</code></td>
-<td>Revising the literature review</td>
+<td><code>clean-survey-data</code></td>
+<td>Recoding missing values in <code>01_clean.R</code></td>
 </tr>
 <tr class="odd">
 <td>Anna</td>
 <td><code>robustness-checks</code></td>
-<td>Adding Table A3</td>
+<td>Adding clustered SEs in <code>03_models.R</code> (Table A3)</td>
 </tr>
 </tbody>
 </table>
@@ -348,34 +378,54 @@ analysis_FINAL_merged2.R</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="what-branch-trees-can-look-like" class="slide level2 smaller">
+<h2>What branch “trees” can look like</h2>
+<p><strong>Sequential:</strong> <code>feature-A</code> is merged, then <code>feature-B</code> starts from the updated <code>main</code></p>
+<pre><code>main ───●──────────────●─────────────────●───▶
+         \            / \               /
+          ●────●─────●   ●────●────●───●
+           feature-A       feature-B</code></pre>
+<p><strong>Parallel:</strong> <code>feature-A</code> starts first, but <code>feature-B</code> is merged first</p>
+<pre><code>                 feature-B
+                 ●────●────●
+                /           \
+main ───●──────●─────────────●──────────●───▶
+         \                    \        /
+          ●────●────●────●─────●──●───●
+               feature-A       └ main merged into feature-A</code></pre>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>In the parallel case, <code>main</code> is first merged into <code>feature-A</code> to bring in the changes from <code>feature-B</code>.</p>
+</div>
+</div>
+</div>
 </section></section>
-<section>
-<section id="tutorials" class="title-slide slide level1 center" style="text-align: center;">
-<h1>Tutorials</h1>
-
-</section>
-<section id="separate-blocks" class="slide level2">
-<h2>3 separate blocks</h2>
-<ul>
-<li>Block 1: set up a shared repository</li>
-<li>Block 2: branches and pull requests</li>
-<li>Block 3: resolve conflicts</li>
-</ul>
-</section></section>
-<section id="tutorial-block-1-set-up-a-shared-repository" class="title-slide slide level1 center" style="text-align: center;">
-<h1>Tutorial Block 1: set up a shared repository</h1>
-
-</section>
-
-<section id="tutorial-block-2-branches-and-pull-requests" class="title-slide slide level1 center" style="text-align: center;">
-<h1>Tutorial Block 2: branches and pull requests</h1>
-
-</section>
-
 <section>
 <section id="tutorial-block-3-resolve-conflicts" class="title-slide slide level1 center" style="text-align: center;">
 <h1>Tutorial Block 3: resolve conflicts</h1>
 
+</section>
+<section id="block-3-summary" class="slide level2">
+<h2>Block 3 summary</h2>
+<ul>
+<li>Conflicts can arise if the same lines in a file have been changed in two branches.</li>
+<li>This situation is “conflicting” for GitHub, which does not know which version you prefer.</li>
+<li>You resolve the conflict by choosing which version you want to keep</li>
+</ul>
+</section>
+<section id="key-takeaways" class="slide level2">
+<h2>Key takeaways</h2>
+<ol type="1">
+<li><strong>Keep <code>main</code> stable</strong>: work on a dedicated branch for each task, and merge back through a pull request</li>
+<li><strong>Use pull requests as peer review</strong>: they document what changed and why, and let co-authors check it before merging</li>
+<li><strong>Merge <code>main</code> into your branch regularly</strong>: pick up your co-authors’ work early, so conflicts stay small and easy to resolve</li>
+<li><strong>GitHub does not replace a good division of tasks</strong>: agree on who works on which files or sections, so you avoid conflicts in the first place</li>
+</ol>
 </section>
 <section id="your-feedback-matters" class="slide level2">
 <h2>Your feedback matters!</h2>
@@ -564,7 +614,7 @@ analysis_FINAL_merged2.R</code></pre>
 </div>
 </div>
 </section>
-<section id="key-takeaways" class="slide level2">
+<section id="key-takeaways-1" class="slide level2">
 <h2>Key Takeaways</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
