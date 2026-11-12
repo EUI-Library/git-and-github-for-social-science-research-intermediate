@@ -168,15 +168,25 @@ A Pull Request is the peer review process *built into your workflow*.
 :::
 
 
-# Let's work together! {style="text-align: center;" .center}
+# Tutorials {style="text-align: center;" .center}
 
-(demo first)
+## 3 separate blocks
+
+- Block 1: set up a shared repository
+- Block 2: branches and pull requests
+- Block 3: resolve conflicts
+
+# Tutorial Block 1: set up a shared repository {style="text-align: center;" .center}
+
+# Tutorial Block 2: branches and pull requests {style="text-align: center;" .center}
+
+# Tutorial Block 3: resolve conflicts {style="text-align: center;" .center}
 
 ## Your feedback matters! 
 
-![](/images/QRCode%20for%20Git%20and%20GitHub%20for%20Social%20Science%20Research_%20intermediate%20level%20-%20collaboration.png){fig-align="center"}
+![](/images/QRCode_git_intermediate_20261112.png){fig-align="center"}
 
-Link: [https://forms.cloud.microsoft/e/gizkDkGkXU](https://forms.cloud.microsoft/e/gizkDkGkXU)
+Link: [https://forms.cloud.microsoft/e/nXnLugZLxE](https://forms.cloud.microsoft/e/nXnLugZLxE)
 
 
 ## Any question? {style="text-align: center;" .center background-image="/images/just_science_done_right.png" background-position="top right" background-repeat="no-repeat" background-size="15%" .smaller}
