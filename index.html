@@ -382,11 +382,14 @@ analysis_FINAL_merged2.R</code></pre>
 <section id="what-branch-trees-can-look-like" class="slide level2 smaller">
 <h2>What branch “trees” can look like</h2>
 <p><strong>Sequential:</strong> <code>feature-A</code> is merged, then <code>feature-B</code> starts from the updated <code>main</code></p>
+<div style="font-size: 1.3em;">
 <pre><code>main ───●──────────────●─────────────────●───▶
          \            / \               /
           ●────●─────●   ●────●────●───●
            feature-A       feature-B</code></pre>
+</div>
 <p><strong>Parallel:</strong> <code>feature-A</code> starts first, but <code>feature-B</code> is merged first</p>
+<div style="font-size: 1.3em;">
 <pre><code>                 feature-B
                  ●────●────●
                 /           \
@@ -394,6 +397,7 @@ main ───●──────●─────────────●
          \                    \        /
           ●────●────●────●─────●──●───●
                feature-A       └ main merged into feature-A</code></pre>
+</div>
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
