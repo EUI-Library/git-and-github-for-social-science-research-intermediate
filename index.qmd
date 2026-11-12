@@ -37,7 +37,7 @@ format:
 * Core concepts and tools (branch, pull request, merge)
 * Hand-on work in pairs
 
-## Learning objetives
+## Learning objectives
 
 * Adding collaborators to your repository
 * Work safely together and in parallel
@@ -109,9 +109,22 @@ GitHub is where much contemporary collaborative research actually happens:
 Journals increasingly require code and data to be shared via GitHub or similar platforms as a condition of publication.
 :::
 
-# Collaboration workflow {style="text-align: center;" .center}
+# Tutorials {style="text-align: center;" .center}
 
-*Branch | Pull Request | Merge — using GitHub Desktop
+## 3 separate blocks
+
+- Block 1: set up a shared repository
+- Block 2: branches and pull requests
+- Block 3: resolve conflicts
+
+# Tutorial Block 1: set up a shared repository {style="text-align: center;" .center}
+
+## Summary Block 1
+
+- The repository lives in 3 different places: online (on GitHub web), on the owner's computer, and on the collaborator's computer
+- Git/GitHub is the link between these 3 places. It allows each version to "talk to each others"
+
+# Tutorial Block 2: branches and pull requests {style="text-align: center;" .center}
 
 ## A big idea: branches {.smaller}
 
@@ -142,9 +155,9 @@ Imagine two co-authors working on the same project at the same time:
 
 | Collaborator | Branch | Task |
 |---|---|---|
-| Simo | `main` | Stable, last shared version |
-| Simo | `chapter2-rewrite` | Revising the literature review |
-| Anna | `robustness-checks` | Adding Table A3 |
+| — | `main` | Stable code that reproduces all results |
+| Simo | `clean-survey-data` | Recoding missing values in `01_clean.R` |
+| Anna | `robustness-checks` | Adding clustered SEs in `03_models.R` (Table A3) |
 
 When both are done, each branch is **merged** into `main` — independently reviewed and integrated.
 
@@ -167,22 +180,49 @@ A Pull Request:
 A Pull Request is the peer review process *built into your workflow*.
 :::
 
+## What branch "trees" can look like {.smaller}
 
-# Tutorials {style="text-align: center;" .center}
+**Sequential:** `feature-A` is merged, then `feature-B` starts from the updated `main`
 
-## 3 separate blocks
+```
+main ───●──────────────●─────────────────●───▶
+         \            / \               /
+          ●────●─────●   ●────●────●───●
+           feature-A       feature-B
+```
 
-- Block 1: set up a shared repository
-- Block 2: branches and pull requests
-- Block 3: resolve conflicts
+**Parallel:** `feature-A` starts first, but `feature-B` is merged first
 
-# Tutorial Block 1: set up a shared repository {style="text-align: center;" .center}
+```
+                 feature-B
+                 ●────●────●
+                /           \
+main ───●──────●─────────────●──────────●───▶
+         \                    \        /
+          ●────●────●────●─────●──●───●
+               feature-A       └ main merged into feature-A
+```
 
-# Tutorial Block 2: branches and pull requests {style="text-align: center;" .center}
+::: {.callout-note appearance="simple"}
+In the parallel case, `main` is first merged into `feature-A` to bring in the changes from `feature-B`. 
+:::
 
 # Tutorial Block 3: resolve conflicts {style="text-align: center;" .center}
 
-## Your feedback matters! 
+## Block 3 summary
+
+- Conflicts can arise if the same lines in a file have been changed in two branches.
+- This situation is "conflicting" for GitHub, which does not know which version you prefer.
+- You resolve the conflict by choosing which version you want to keep
+
+## Key takeaways
+
+1. **Keep `main` stable**: work on a dedicated branch for each task, and merge back through a pull request
+2. **Use pull requests as peer review**: they document what changed and why, and let co-authors check it before merging
+3. **Merge `main` into your branch regularly**: pick up your co-authors' work early, so conflicts stay small and easy to resolve
+4. **GitHub does not replace a good division of tasks**: agree on who works on which files or sections, so you avoid conflicts in the first place
+
+## Your feedback matters!
 
 ![](/images/QRCode_git_intermediate_20261112.png){fig-align="center"}
 
