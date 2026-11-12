@@ -184,15 +184,18 @@ A Pull Request is the peer review process *built into your workflow*.
 
 **Sequential:** `feature-A` is merged, then `feature-B` starts from the updated `main`
 
+::: {style="font-size: 1.3em;"}
 ```
 main ───●──────────────●─────────────────●───▶
          \            / \               /
           ●────●─────●   ●────●────●───●
            feature-A       feature-B
 ```
+:::
 
 **Parallel:** `feature-A` starts first, but `feature-B` is merged first
 
+::: {style="font-size: 1.3em;"}
 ```
                  feature-B
                  ●────●────●
@@ -202,6 +205,7 @@ main ───●──────●─────────────●
           ●────●────●────●─────●──●───●
                feature-A       └ main merged into feature-A
 ```
+:::
 
 ::: {.callout-note appearance="simple"}
 In the parallel case, `main` is first merged into `feature-A` to bring in the changes from `feature-B`. 
