@@ -1,4 +1,4 @@
-# Slide deck the EUI Library training sessions "Git and GitHub for Social Science Research: Intermediate level"
+# Slide deck for the training sessions "Git and GitHub for Social Science Research: Intermediate level"
 
 These slides are prepared in the context of the EUI Library #researchskils training programme.
 
